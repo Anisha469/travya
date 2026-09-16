@@ -14,7 +14,7 @@ function SavedPlaces({
       const token = localStorage.getItem("token");
 
       const savedResponse = await fetch(
-        "http://localhost:5000/api/saved",
+        "https://travya.onrender.com/api/saved",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ function SavedPlaces({
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/api/saved/${destinationId}`,
+        `https://travya.onrender.com/api/saved/${destinationId}`,
         {
           method: "DELETE",
           headers: {

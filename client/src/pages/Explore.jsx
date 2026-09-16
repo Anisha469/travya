@@ -39,7 +39,7 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
         setError("");
 
         const destinationsResponse = await fetch(
-          "http://localhost:5000/api/destinations"
+          "https://travya.onrender.com/api/destinations"
         );
 
         if (!destinationsResponse.ok) {
@@ -156,7 +156,7 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
         );
       } else {
         const response = await fetch(
-          "http://localhost:5000/api/saved",
+          "https://travya.onrender.com/api/saved",
           {
             method: "POST",
             headers: {

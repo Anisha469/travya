@@ -30,7 +30,7 @@ function App() {
   const handleOpenSafetyCenter = async (destinationId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/destinations/${destinationId}`
+        `https://travya.onrender.com/api/destinations/${destinationId}`
       );
 
       if (!response.ok) {

@@ -90,8 +90,8 @@ function DestinationDetails({ destination, onBack }) {
     try {
       const response = await fetch(
         isSaved
-          ? `http://localhost:5000/api/saved/${destination.id}`
-          : "http://localhost:5000/api/saved",
+          ? `https://travya.onrender.com/api/saved/${destination.id}`
+          : "https://travya.onrender.com/api/saved",
         {
           method: isSaved ? "DELETE" : "POST",
           headers: {
