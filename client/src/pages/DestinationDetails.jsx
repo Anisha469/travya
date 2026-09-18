@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const fallbackImage =
   "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85";
 
@@ -38,7 +40,7 @@ function DestinationDetails({ destination, onBack }) {
 
       try {
         const response = await fetch(
-          "http://localhost:5000/api/saved",
+          `${API_URL}/api/saved`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -90,8 +92,8 @@ function DestinationDetails({ destination, onBack }) {
     try {
       const response = await fetch(
         isSaved
-          ? `https://travya.onrender.com/api/saved/${destination.id}`
-          : "https://travya.onrender.com/api/saved",
+          ? `${API_URL}/api/saved/${destination.id}`
+          : `${API_URL}/api/saved`,
         {
           method: isSaved ? "DELETE" : "POST",
           headers: {

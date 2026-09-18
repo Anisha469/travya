@@ -10,6 +10,8 @@ import Register from "./components/Register";
 
 import "./App.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
@@ -30,7 +32,7 @@ function App() {
   const handleOpenSafetyCenter = async (destinationId) => {
     try {
       const response = await fetch(
-        `https://travya.onrender.com/api/destinations/${destinationId}`
+        `${API_URL}/api/destinations/${destinationId}`
       );
 
       if (!response.ok) {

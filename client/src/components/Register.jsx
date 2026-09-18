@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Register({ onRegister, onShowLogin }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,7 +16,7 @@ function Register({ onRegister, onShowLogin }) {
 
     try {
       const response = await fetch(
-        "https://travya.onrender.com/api/auth/register",
+        `${API_URL}/api/auth/register`,
         {
           method: "POST",
           headers: {

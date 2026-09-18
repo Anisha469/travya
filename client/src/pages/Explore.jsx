@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import DestinationCard from "../components/DestinationCard";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const fallbackImage =
   "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85";
 
@@ -39,7 +41,7 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
         setError("");
 
         const destinationsResponse = await fetch(
-          "https://travya.onrender.com/api/destinations"
+          `${API_URL}/api/destinations`
         );
 
         if (!destinationsResponse.ok) {
@@ -55,7 +57,7 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
         */
         if (token) {
           const savedResponse = await fetch(
-            "http://localhost:5000/api/saved",
+            `${API_URL}/api/saved`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -138,7 +140,7 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
 
       if (isSaved) {
         const response = await fetch(
-          `http://localhost:5000/api/saved/${destinationId}`,
+          `${API_URL}/api/saved/${destinationId}`,
           {
             method: "DELETE",
             headers: {
@@ -156,7 +158,7 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
         );
       } else {
         const response = await fetch(
-          "https://travya.onrender.com/api/saved",
+          `${API_URL}/api/saved`,
           {
             method: "POST",
             headers: {
@@ -172,7 +174,9 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
 
         if (!response.ok) {
           const data = await response.json();
-          throw new Error(data.message || "Unable to save destination");
+          throw new Error(
+            data.message || "Unable to save destination"
+          );
         }
 
         setSavedDestinations((previousSaved) => [
@@ -199,7 +203,9 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
           ← Back home
         </button>
 
-        <p className="explore-eyebrow">DISCOVER YOUR NEXT JOURNEY</p>
+        <p className="explore-eyebrow">
+          DISCOVER YOUR NEXT JOURNEY
+        </p>
 
         <h1>
           Find places
@@ -207,8 +213,8 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
         </h1>
 
         <p className="explore-description">
-          Discover beautiful destinations and learn how to travel there with
-          greater confidence.
+          Discover beautiful destinations and learn how to travel there
+          with greater confidence.
         </p>
       </section>
 
@@ -285,12 +291,15 @@ function Explore({ onBack, onOpenSafetyCenter, onOpenDetails }) {
                       destination={destination}
                       index={index}
                       isSaved={isSaved}
-                      isSaving={savingDestinationId === destination.id}
+                      isSaving={
+                        savingDestinationId === destination.id
+                      }
                       onToggleSave={toggleSaveDestination}
                       onOpenSafetyCenter={onOpenSafetyCenter}
                       onOpenDetails={onOpenDetails}
                       imageUrl={
-                        destinationImages[destination.name] || fallbackImage
+                        destinationImages[destination.name] ||
+                        fallbackImage
                       }
                       fallbackImage={fallbackImage}
                     />

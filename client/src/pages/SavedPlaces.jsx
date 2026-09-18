@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import DestinationCard from "../components/DestinationCard";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function SavedPlaces({
   onBack,
   onOpenSafetyCenter,
@@ -14,7 +16,7 @@ function SavedPlaces({
       const token = localStorage.getItem("token");
 
       const savedResponse = await fetch(
-        "https://travya.onrender.com/api/saved",
+        `${API_URL}/api/saved`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -29,7 +31,7 @@ function SavedPlaces({
       const savedData = await savedResponse.json();
 
       const destinationsResponse = await fetch(
-        "http://localhost:5000/api/destinations"
+        `${API_URL}/api/destinations`
       );
 
       if (!destinationsResponse.ok) {
@@ -63,7 +65,7 @@ function SavedPlaces({
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `https://travya.onrender.com/api/saved/${destinationId}`,
+        `${API_URL}/api/saved/${destinationId}`,
         {
           method: "DELETE",
           headers: {
