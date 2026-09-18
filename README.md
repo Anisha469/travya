@@ -1,51 +1,59 @@
 # Travya
 
-Travya is a travel safety and exploration web application. It allows users to explore different destinations, view information about them, save places they like, and access a safety center.
+Travya is a full-stack travel safety and exploration web application. It helps users explore destinations, view useful travel information, save places they are interested in, and access a travel safety center.
 
 ## Features
 
 - User registration and login
-- JWT authentication
-- Explore different destinations
+- JWT-based authentication
+- Explore destinations
 - Search destinations
 - Filter destinations by category
 - View destination details
 - Save and remove destinations
+- Saved Places
 - Travel Safety Center
-- Dark mode
 - Responsive design
+- Deployed frontend and backend
 
 ## Tech Stack
 
 ### Frontend
+
 - React.js
 - JavaScript
 - HTML
 - CSS
 
 ### Backend
+
 - Node.js
 - Express.js
+- REST APIs
 
 ### Database
-- SQLite
-- Prisma
+
+- MongoDB
+- Mongoose
 
 ### Authentication
+
 - JWT
 - bcryptjs
 
 ## Project Structure
 
 ```text
-travya
+travya/
 │
-├── client
+├── client/
 │   └── React frontend
 │
-├── server
-│   ├── API routes
-│   ├── Prisma
+├── server/
+│   ├── data/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
 │   └── server.js
 │
 └── .gitignore
